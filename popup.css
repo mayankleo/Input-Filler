@@ -63,10 +63,9 @@ select {
   filter: brightness(0) invert(1);
 }
 
-.delete-icon {
+.delete-icon, .edit-icon {
   width: 16px;
   height: 16px;
-  margin-left: auto;
   cursor: pointer;
   transition: all 0.1s linear;
 }
@@ -74,6 +73,10 @@ select {
 .delete-icon:hover {
   filter: brightness(0) saturate(100%) invert(11%) sepia(91%) saturate(7470%)
     hue-rotate(1deg) brightness(100%) contrast(95%);
+}
+
+.btn-group{
+   margin-left: auto;
 }
 
 .input-count {
@@ -148,15 +151,35 @@ input:checked + .slider:before {
   height: 100%;
 }
 
-.on, .off {
+.on,
+.off {
   font-size: 10px;
   font-family: monospace;
   font-weight: 700;
 }
 
-.header-container{
+.header-container {
   display: flex;
   gap: 10px;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
 }

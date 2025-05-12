@@ -20,12 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const fieldDiv = document.createElement('div');
         fieldDiv.classList.add('dynamic-field');
 
-
         const inputCount = document.createElement('span');
-        inputCount.textContent = fieldsContainer.children.length + 1
+        inputCount.textContent = fieldsContainer.children.length + 1;
         inputCount.classList.add('input-count');
-
-
 
         const inputType = document.createElement('select');
         inputType.setAttribute("data-role", "type");
@@ -36,40 +33,57 @@ document.addEventListener('DOMContentLoaded', () => {
         <option value="number">Number</option>
         <option value="url">URL</option>
         <option value="date">Date</option>
-      `;
+    `;
         inputType.value = type;
+        inputType.disabled = value ? true : false;
 
         const inputName = document.createElement('input');
         inputName.setAttribute("data-role", "name");
         inputName.type = 'text';
         inputName.placeholder = 'Field Name';
         inputName.value = name;
+        inputName.disabled = value ? true : false;
 
         const inputValue = document.createElement('input');
         inputValue.setAttribute("data-role", "value");
         inputValue.type = type;
         inputValue.placeholder = 'Value';
         inputValue.value = value;
-
-
-        const deleteFieldIcon = document.createElement('img');
-        deleteFieldIcon.classList.add('delete-icon')
-        deleteFieldIcon.src = 'delete.png';
-        deleteFieldIcon.alt = 'Delete';
-        deleteFieldIcon.addEventListener('click', () => {
-            fieldsContainer.removeChild(fieldDiv);
-        });
+        inputValue.disabled = value ? true : false;
 
         inputType.addEventListener('change', () => {
             inputValue.type = inputType.value;
         });
 
+        const btnGroup = document.createElement('div');
+        btnGroup.classList.add('btn-group');
+
+        const editBtn = document.createElement('img');
+        editBtn.src = value ? 'edit.png' : 'done.png';
+        editBtn.alt = 'Edit';
+        editBtn.classList.add('edit-icon');
+        editBtn.addEventListener('click', () => {
+            const isDisabled = inputName.disabled;
+            inputName.disabled = inputValue.disabled = inputType.disabled = !isDisabled;
+            editBtn.src = isDisabled ? 'done.png' : 'edit.png';
+        });
+
+        const deleteBtn = document.createElement('img');
+        deleteBtn.src = 'delete.png';
+        deleteBtn.alt = 'Delete';
+        deleteBtn.classList.add('delete-icon');
+        deleteBtn.addEventListener('click', () => {
+            fieldsContainer.removeChild(fieldDiv);
+        });
+
+        btnGroup.appendChild(editBtn);
+        btnGroup.appendChild(deleteBtn);
 
         fieldDiv.appendChild(inputCount);
         fieldDiv.appendChild(inputType);
         fieldDiv.appendChild(inputName);
         fieldDiv.appendChild(inputValue);
-        fieldDiv.appendChild(deleteFieldIcon);
+        fieldDiv.appendChild(btnGroup);
         fieldsContainer.appendChild(fieldDiv);
     }
 
