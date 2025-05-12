@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Job Autofill</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="header-container">
+      <h2>Autofill Profile</h2>
+      <label class="switch">
+        <input type="checkbox" id="toggle-extension" />
+        <span class="slider">
+          <span class='onoff-con'>
+            <span class="on">ON</span>
+            <span class="off">OFF</span>
+          </span>
+        </span>
+      </label>
+    </div>
+
+    <form id="autofillForm">
+
+      <div id="fieldsContainer"></div>
+      <div class="button-container">
+        <button id="addFieldBtn" class="align-btn" type="button">
+          <img src="add.png" class="white-img" alt="Add Icon" width="16" height="16"><span>Add</span>
+        </button>
+        <button type="submit" class="align-btn">
+          <img src="save.png" class="white-img" alt="Save Icon" width="16" height="16"><span>Save</span>
+        </button>
+        <span id="status" class="status"></span>
+      </div>
+
+    </form>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>
